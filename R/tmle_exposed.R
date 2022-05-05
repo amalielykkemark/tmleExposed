@@ -125,9 +125,9 @@
 #'
 #'summary(res)
 #'
-#'#intervention: all exposed (A=1) receives the intermediate (Z=1).
-#'#target parameter: the change in outcome among the exposed had all
-#'#exposed received the intermediate (Z=1).
+#' #intervention: all exposed (A=1) receives the intermediate (Z=1).
+#' #target parameter: the change in outcome among the exposed had all
+#' #exposed received the intermediate (Z=1).
 #'tmle_exposed(data=d,
 #'             intervention = 1,
 #'             exposure.A='exposure',
@@ -540,6 +540,7 @@ tmle_exposed<-function(data,
 
   class(out)<-'tmle_exposed'
   return(out)
+  print(out)
 }
 
 
