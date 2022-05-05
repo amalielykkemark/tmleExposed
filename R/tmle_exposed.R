@@ -205,25 +205,25 @@ tmle_exposed<-function(data,
     setnames(dt,outcome.Y,'Y')
   }
 
-   # #stop if bigger than 2 instead of this
-   # if (length(unique(dt[,A]))!=2 | length(unique(dt[,Z]))!=2 | length(unique(dt[,Y]))!=2) {
-   #   stop('Exposure, interediate, and outcome must be binary.')
-   # }
-
-  if (!is.integer(dt[,A])){
-    dt[,A:=as.integer(A)]
-    warning(paste('The exposure variable has been converted to integer'))
-  }
-
-  if (!is.integer(dt[,Z])) {
-    dt[,Z:=as.integer(Z)]
-    warning(paste('The intermediate variable has been converted to integer'))
-  }
-
-  if (!is.integer(dt[,Y])) {
-    dt[,Y:=as.integer(Y)]
-    warning(paste('The outcome variable has been converted to integer'))
-  }
+   #stop if bigger than 2 instead of this
+   if (length(unique(dt[,A]))!=2 | length(unique(dt[,Z]))!=2 | length(unique(dt[,Y]))!=2) {
+     stop('Exposure, interediate, and outcome must be binary.')
+   }
+#
+#   if (!is.integer(dt[,A])){
+#     dt[,A:=as.integer(A)]
+#     warning(paste('The exposure variable has been converted to integer'))
+#   }
+#
+#   if (!is.integer(dt[,Z])) {
+#     dt[,Z:=as.integer(Z)]
+#     warning(paste('The intermediate variable has been converted to integer'))
+#   }
+#
+#   if (!is.integer(dt[,Y])) {
+#     dt[,Y:=as.integer(Y)]
+#     warning(paste('The outcome variable has been converted to integer'))
+#   }
 
 
   pibar <- dt[,mean(A==1)]
