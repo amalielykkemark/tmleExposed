@@ -84,6 +84,8 @@
 #'  psistar) along with the standard errors for psi0/psi0star, psi1, and
 #'  psi/psistar.
 #'
+#' @import data.table
+#'
 #' @examples
 #'library(data.table)
 #'library(SuperLearner)
@@ -157,7 +159,7 @@
 #'             discrete.SL = FALSE)
 #'
 #'@export
-tmle_exposed<-function(data=data,
+tmle_exposed<-function(data,
                        intervention='unexposed',
                        discrete.SL=TRUE,
                        exposure.A=NA,
@@ -179,8 +181,12 @@ tmle_exposed<-function(data=data,
   if(is.na(exposure.A)|is.na(intermediate.Z)|is.na(outcome.Y)) {
     stop(paste('Please speficy names for the exposure, intermediate, and outcome variables'))
   }
-  dt<-copy(data)
-  data.table::setDT(dt)
+
+  if(is.data.table(data)){
+    dt <- data.table::copy(data)
+  }else{
+    dt <- data.table::as.data.table(data)
+  }
 
   if(exists('id',dt)==FALSE){
     dt[,id:=1:.N]
@@ -199,10 +205,10 @@ tmle_exposed<-function(data=data,
     setnames(dt,outcome.Y,'Y')
   }
 
-  # #stop if bigger than 2 instead of this
-  # if (length(unique(dt[,A]))!=2 | length(unique(dt[,Z]))!=2 | length(unique(dt[,Y]))!=2) {
-  #   stop('Exposure, interediate, and outcome must be binary.')
-  # }
+   # #stop if bigger than 2 instead of this
+   # if (length(unique(dt[,A]))!=2 | length(unique(dt[,Z]))!=2 | length(unique(dt[,Y]))!=2) {
+   #   stop('Exposure, interediate, and outcome must be binary.')
+   # }
 
   if (!is.integer(dt[,A])){
     dt[,A:=as.integer(A)]
