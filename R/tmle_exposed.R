@@ -228,17 +228,17 @@ tmle_exposed<-function(data,
 
 
   pibar <- dt[,mean(A==1)]
-  pifit <- SuperLearner::SuperLearner(Y=dt[,as.numeric(A==1)],
+  pifit <- SuperLearner::SuperLearner(Y=dt[,A], #dt[,as.numeric(A==1)],
                                       X=dt[,.SD,.SDcols=cov.A],
                                       family = binomial(),
                                       SL.library = SL.lib.A)
 
-  gammafit <-SuperLearner::SuperLearner(Y=dt[,as.numeric(Z==1)],
+  gammafit <-SuperLearner::SuperLearner(Y=dt[,Z],#dt[,as.numeric(Z==1)],
                                         X=dt[,.SD,.SDcols=c(cov.Z,'A')],
                                         family = binomial(),
                                         SL.library = SL.lib.Z)
 
-  Qfit <-SuperLearner::SuperLearner(Y=dt[,as.numeric(Y==1)],
+  Qfit <-SuperLearner::SuperLearner(Y=dt[,Y],#dt[,as.numeric(Y==1)],
                                     X=dt[,.SD,.SDcols=c(cov.Y,'A','Z')],
                                     family = binomial(),
                                     SL.library = SL.lib.Y)
