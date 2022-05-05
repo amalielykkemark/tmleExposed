@@ -32,7 +32,7 @@
 #'
 #'@name tmle_exposed
 #'
-#'@author Amalie Lykkemark Moller \email{amalielykkemark@@live.dk}
+#'@author Amalie Lykkemark Moller \email{amalielykkemark@@live.dk} Helene Charlotte Wiese Rytgaard, Thomas Alexander Gerds, and Christian Torp-Pedersen
 #'
 #'@usage tmle_exposed(data, intervention='unexposed', discrete.SL=TRUE,
 #'  exposure.A=NA, intermediate.Z=NA, outcome.Y=NA, cov.A, cov.Z, cov.Y,
@@ -86,7 +86,6 @@
 #'
 #' @import data.table
 #' @import SuperLearner
-#' @import riskRegression
 #'
 #' @examples
 #'require(tmleExposed)

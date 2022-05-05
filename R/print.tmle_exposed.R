@@ -1,3 +1,6 @@
+#'@rdname print.tmle_exposed
+#'@method print tmle_exposed
+#'@export
 print.tmle_exposed <- function(x,...) {
   if(identical(class(x), "tmle_exposed")){
 

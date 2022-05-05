@@ -6,7 +6,7 @@ Author: Amalie Lykkemark Moller, Helene Charlotte Wiese Rytgaard, Thomas Alexand
 Maintainer: The package maintainer <amalielykkemark@live.dk>
 Description: The \code{tmle_exposed} is a Targeted Minumum-loss based estimator (TMLE) for estimating effects of interventions targeting an intermediate factor in a high risk population (the exposed). The intermediate factor (Z) could be an intervenable variable as, i.e. treatment access, and is an effect of the exposure (A) and a cause of the outcome (Y), A -> Z ->Y. The function \code{tmle_exposed} allows the user to estimate effects of a stochastic or deterministic intervention on the intermediate. If '\code{intervention='unexposed'}, then the estimated parameter is the expected change in outcome risk under a stochastic intervention among the exposed (A=1) where the exposed probability of the intermediate (Z) variable became as observed among the unexposed (A=0). 
 License: None
-Imports: data.table, SuperLearner, riskRegression
+Imports: data.table, SuperLearner
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
