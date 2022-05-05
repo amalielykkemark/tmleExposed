@@ -88,6 +88,7 @@
 #' @import SuperLearner
 #'
 #' @examples
+#'library(data.table)
 #'require(tmleExposed)
 #'n=5000
 #'set.seed(1)
