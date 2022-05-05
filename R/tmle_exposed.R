@@ -34,17 +34,17 @@
 #'
 #'@author Amalie Lykkemark Moller \email{amalielykkemark@@live.dk}
 #'
-#'@usage tmle_exposed(data=data, intervention='unexposed', discrete.SL=TRUE,
+#'@usage tmle_exposed(data, intervention='unexposed', discrete.SL=TRUE,
 #'  exposure.A=NA, intermediate.Z=NA, outcome.Y=NA, cov.A, cov.Z, cov.Y,
 #'  SL.lib.A=FALSE, SL.lib.Z=FALSE, SL.lib.Y=FALSE, iterations=10)
-#'
 #'@param data  A data frame/data table with a binary exposure, a binary
 #'  intermediate variable, a binary outcome, and covariates.
-#'@param intervention  Either the character string \code{unexposed}, in which
-#'  case ...  or a value, X, which is between 0 and 1, indicating the average
-#'  probability of having the intermediate = 1. See details.... bla If
-#'  \code{unexposed} then the intervention will be set to the distribution of
-#'  the intermediate among the unexposed (A=0).
+#'@param intervention Either the character string \code{unexposed} for a stochastic intervention or
+#'  or a value, X, between 0 and 1 for a deterministic intervention.  If \code{unexposed} then the
+#'  distribution of the intermediate (Z) among the exposed (A=1) is set to the distribution of (Z)
+#'  observed among the unexposed (A=0). Under the deterministic intervention the chance of the
+#'  intermediate among the exposed is set to the fixed value X, i.e. if X=1 then chance of the
+#'  intermediate is 100% for all exposed observations.
 #'@param discrete.SL  If \code{FALSE} TMLE will use the weighted combination of
 #'  the algorithms in the super learner library that minimizes the loss
 #'  function. Defaults to \code{TRUE}, in which case the discrete super learner
@@ -85,10 +85,10 @@
 #'  psi/psistar.
 #'
 #' @import data.table
+#' @import SuperLearner
+#' @import riskRegression
 #'
 #' @examples
-#'library(data.table)
-#'library(SuperLearner)
 #'require(tmleExposed)
 #'n=5000
 #'set.seed(1)
@@ -100,7 +100,8 @@
 #'Z <- rbinom(n, 1, plogis(5-0.08*age+1*sex-1.2*disease-0.8*A+0.01*A*disease))
 #'Y <- rbinom(n, 1, plogis(-9+0.09*age+0.5*sex+0.8*disease-1.2*Z+0.7*A))
 #'
-#'d <- data.table(id=1:n, exposure=as.integer(A), intermediate=as.integer(Z), outcome=as.integer(Y), age, sex, disease)
+#'d <- data.table(id=1:n, exposure=as.integer(A), intermediate=as.integer(Z),
+#'                outcome=as.integer(Y), age, sex, disease)
 #'
 #'##### Define algorithms for the Super Learner library #####
 #'lib = c('SL.glm','SL.step.interaction')
@@ -141,10 +142,10 @@
 #'             SL.lib.Y = lib,
 #'             discrete.SL = FALSE)
 #'
-#'intervention: all exposed (A=1) had 60% chance of reciving
-#'#the intermediate (Z=1).
-#'target parameter: the change in outcome among the exposed had
-#'#60% exposed received the intermediate (Z=1).
+#' #intervention: all exposed (A=1) had 60% chance of reciving
+#' #the intermediate (Z=1).
+#' #target parameter: the change in outcome among the exposed had
+#' #60% exposed received the intermediate (Z=1).
 #'tmle_exposed(data=d,
 #'             intervention = 0.6,
 #'             exposure.A='exposure',
@@ -173,9 +174,9 @@ tmle_exposed<-function(data,
                        SL.lib.Y=FALSE,
                        iterations=10){
 
-  require(data.table)
-  require(SuperLearner)
-  require(riskRegression)
+  requireNamespace('data.table')
+  requireNamespace('SuperLearner')
+  requireNamespace('riskRegression')
 
   #variable and input check
   if(is.na(exposure.A)|is.na(intermediate.Z)|is.na(outcome.Y)) {
@@ -539,8 +540,8 @@ tmle_exposed<-function(data,
   out$output.dataset<-dt.full
 
   class(out)<-'tmle_exposed'
-  return(out)
-  print(out)
+
+  return(invisible(out))
 }
 
 
