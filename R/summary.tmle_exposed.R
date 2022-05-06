@@ -1,5 +1,9 @@
+#'@title Summary function for \code{tmle_exposed}
+#'@description Summary function for \code{tmle_exposed} a targeted minimum-loss based estimator for stochastic and deterministic interventions among the exposed.
+#'@name summary.tmle_exposed
 #'@rdname summary.tmle_exposed
 #'@method summary tmle_exposed
+#'@author Amalie Lykkemark Moller \email{amalielykkemark@@live.dk}
 #'@export
 summary.tmle_exposed <- function(x,...) {
   if(identical(class(x), "tmle_exposed")){
