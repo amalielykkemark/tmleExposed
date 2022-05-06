@@ -43,8 +43,8 @@
 #'  or a value, X, between 0 and 1 for a deterministic intervention.  If \code{unexposed} then the
 #'  distribution of the intermediate (Z) among the exposed (A=1) is set to the distribution of (Z)
 #'  observed among the unexposed (A=0). Under the deterministic intervention the chance of the
-#'  intermediate among the exposed is set to the fixed value X, i.e. if X=1 then chance of the
-#'  intermediate is 100% for all exposed observations.
+#'  intermediate among the exposed is set to the fixed value X, i.e. if X=1 then all exposed
+#'  observations received the intermediate.
 #'@param discrete.SL  If \code{FALSE} TMLE will use the weighted combination of
 #'  the algorithms in the super learner library that minimizes the loss
 #'  function. Defaults to \code{TRUE}, in which case the discrete super learner
