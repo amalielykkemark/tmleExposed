@@ -96,7 +96,11 @@ one algorithm, results will be estimated based on this algorithm alone, and
 thus, not using Super Learning.
 }
 \details{
-
+The structure of the data should be as follows: \item For the binary
+exposure (\code{exposure.A}) 1 = exposed and 0 = unexposed. \item For the
+binary intermediate variable (\code{intermediate.Z}) 1 = treatment and 0 = no
+treatment. \item For the binary outcome (\code{outcome.Y}) 1 = event and 0 =
+no event.
 }
 \examples{
 library(data.table)
