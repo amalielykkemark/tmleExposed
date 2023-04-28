@@ -7,7 +7,7 @@
 \method{print}{tmle_exposed}(x, ...)
 }
 \description{
-Print function for \code{tmle_exposed} a targeted minimum-loss based estimator for stochastic and deterministic interventions among the exposed.
+Print function for \code{tmle_exposed} a targeted minimum-loss based estimator for stochastic interventions among the exposed.
 }
 \author{
 Amalie Lykkemark Moller \email{amalielykkemark@live.dk}
