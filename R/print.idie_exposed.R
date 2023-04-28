@@ -14,17 +14,9 @@ print.tmle_exposed <- function(x,...) {
     table[,CI95lower:=Estimate-1.96*SE]
     table[,CI95upper:=Estimate+1.96*SE]
 
-<<<<<<< HEAD
     table[,Parameter:=c('Risk under stochastic intervention','Risk under no intervetion','Risk difference (IDIE among the exposed)')]
     table<-table[,.(Parameter,Estimate,SE,CI95lower,CI95upper)]
 
     print(table)
   }
 }
-=======
-      table[,Parameter:=c('Risk under stochastic intervention','Risk under no intervetion','Risk difference (IDIE among the exposed)')]
-      table<-table[,.(Parameter,Estimate,SE,CI95lower,CI95upper)]
-
-    print(table)
-  }}
->>>>>>> b9f7befc6b3ec207b38c2ebb4b086ac700a86075
