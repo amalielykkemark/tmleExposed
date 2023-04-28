@@ -1,5 +1,5 @@
 #'@title Print function for \code{tmle_exposed}
-#'@description Print function for \code{tmle_exposed} a targeted minimum-loss based estimator for stochastic and deterministic interventions among the exposed.
+#'@description Print function for \code{tmle_exposed} a targeted minimum-loss based estimator for stochastic interventions among the exposed.
 #'@name print.tmle_exposed
 #'@author Amalie Lykkemark Moller \email{amalielykkemark@@live.dk}
 #'@rdname print.tmle_exposed

@@ -9,6 +9,7 @@
 summary.idie_exposed <- function(x,...) {
   if(identical(class(x), "idie_exposed")){
 
+<<<<<<< HEAD
     cat("\nRisk difference (IDIE among the exposed)")
     cat("\n     Parameter estimate: ", signif(x$estimate$psi,5))
     cat("\n     Estimated variance: ", signif(x$se$se.diff,5))
@@ -29,6 +30,28 @@ summary.idie_exposed <- function(x,...) {
     cat("\n     Distribution of chance of the mediator without intervention among the exposed:\n")
     print(round(x$distributions['distribution.Z.a1',],4))
     cat('\n')
+=======
+      cat("\nRisk difference (IDIE among the exposed)")
+      cat("\n     Parameter estimate: ", signif(x$estimate$psi,5))
+      cat("\n     Estimated variance: ", signif(x$se$se.diff,5))
+      cat("\n     95% confidence interval:",paste("(", signif(x$estimate$psi-1.96*x$se$se.diff,5),", ", signif(x$estimate$psi+1.96*x$se$se.diff,5), ")", sep=""),"\n")
+      cat('\n')
+      cat("\nRisk among the exposed under stochastic intervention")
+      cat("\n     Parameter estimate: ", signif(x$estimate$psi0,5))
+      cat("\n     Estimated variance: ", signif(x$se$se0,5))
+      cat("\n     95% confidence interval:",paste("(", signif(x$estimate$psi0-1.96*x$se$se0,5),", ", signif(x$estimate$psi0+1.96*x$se$se0,5), ")", sep=""),"\n")
+      cat("\n     Distribution of chance of the mediator under intervention among the exposed:\n")
+      print(round(x$distributions['distribution.Z.a0',],4))
+      cat('\n')
+
+      cat("\nRisk among the exposed without intervention")
+      cat("\n     Parameter estimate: ", signif(x$estimate$psi1,5))
+      cat("\n     Estimated variance: ", signif(x$se$se1,5))
+      cat("\n     95% confidence interval:",paste("(", signif(x$estimate$psi1-1.96*x$se$se1,5),", ", signif(x$estimate$psi1+1.96*x$se$se1,5), ")", sep=""),"\n")
+      cat("\n     Distribution of chance of the mediator without intervention among the exposed:\n")
+      print(round(x$distributions['distribution.Z.a1',],4))
+      cat('\n')
+>>>>>>> b9f7befc6b3ec207b38c2ebb4b086ac700a86075
 
 
     if (!is.null(x$superlearner.discrete)){
